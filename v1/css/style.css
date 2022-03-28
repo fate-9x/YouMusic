@@ -1,7 +1,9 @@
 :root {
     --morado: rgb(131, 6, 153);
+    --moradoOscuro: rgb(20, 0, 24);
     --fuenteEncabezado: 'Nunito', sans-serif;
-
+    --negro: rgb(20, 0, 24);
+    --rgb: rgb(50, 0, 59);
 }
 
 /* GLOBALES */
@@ -16,18 +18,90 @@ html {
 }
 
 body {
-
-    font-family: ;
+    font-size: 16px;
+    font-family: var(--fuenteEncabezado);
+    /* background-color: var(--moradoOscuro); */
+    background-image: url('../img/fondo-1.jpg');
     height: 100vh;
-    background-image: linear-gradient(
-        0deg,
-        rgb(5, 5, 5) 10%,
-        rgb(0, 0, 0) 90%
-    );
-    display: flex;
+}
+
+/* NAV */
+
+.logo-container {
+    display: block;
+}
+
+.navbar {
+    background-image: linear-gradient(to top, var(--moradoOscuro) 0%, #000 100%);
+    height: auto;
+    justify-content: space-around;
+    border-bottom: 1rem solid #000;
+    top: 0;
+}
+
+.navbar a {
+    font-family: var(--fuenteEncabezado);
+    text-decoration: none;
+    color: white;
+}
+
+.nav-item {
+    padding: 2rem;
+    margin: 0.5rem;
+    background-color: rgb(0, 0, 0);
+    border-radius: 4rem;
+    font-size: 17px;
+}
+
+.container-fluid {
     flex-direction: column;
     align-items: center;
+}
+
+.navbar {
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .navbar {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .container-fluid {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .nav-item {
+        padding: 2rem;
+        margin: 2rem 1rem;
+        background-color: rgb(0, 0, 0);
+        border-radius: 4rem;
+        font-size: 17px;
+    }
+
+}
+/* MAIN */
+
+.container {
+    max-width: 100rem;
+    background-color: #000;
+    border-radius: 3rem;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+.sombra {
+    box-shadow: 0.5rem 1.5rem 1.5rem 0.5rem rgba(131, 6, 153, 0.6);
+    padding: 2rem 3rem;
+    border-radius: 1.5rem;
 }
 
 /* ----REPRODUCTOR---- */
@@ -35,12 +109,16 @@ body {
 .music-container {
     background-color: #fff;
     border-radius: 1.5rem;
-    box-shadow: 0.5rem 1.5rem 1.5rem 0.5rem rgba(131, 6, 153, 0.6);
     display: flex;
-    padding: 2rem 3rem;
     position: relative;
+    padding: 2rem 3rem;
+    width: 70rem;
+    max-height: 17rem;
     margin: 10rem 0;
-    z-index: 10;
+    z-index: 99;
+    position: fixed;
+    bottom: 0;
+
 }
 
 .img-container {
@@ -75,7 +153,7 @@ body {
 }
 
 .music-container.play .img-container img {
-    /* animation-play-state: running; */
+    animation-play-state: running;
 }
 
 @keyframes rotate {
@@ -92,7 +170,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1;
+    z-index: 2;
 }
 
 .music-btn {
@@ -105,6 +183,10 @@ body {
 
 .music-btn:focus {
     outline: 0;
+}
+
+.play-btn {
+    font-size: 3rem;
 }
 
 .music-info {
@@ -149,3 +231,4 @@ body {
     transition: width 0.1s linear;
 
 }
+
