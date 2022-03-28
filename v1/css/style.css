@@ -1,6 +1,6 @@
 :root {
     --morado: rgb(131, 6, 153);
-    --moradoOscuro: rgb(40, 0, 47);
+    --moradoOscuro: rgb(20, 0, 24);
     --fuenteEncabezado: 'Nunito', sans-serif;
     --negro: rgb(20, 0, 24);
     --rgb: rgb(50, 0, 59);
@@ -20,22 +20,71 @@ html {
 body {
     font-size: 16px;
     font-family: var(--fuenteEncabezado);
-    background-image: linear-gradient(to top, var(--negro) 50%, var(--moradoOscuro) 100%);
+    /* background-color: var(--moradoOscuro); */
+    background-image: url('../img/fondo-1.jpg');
     height: 100vh;
 }
 
 /* NAV */
 
+.logo-container {
+    display: block;
+}
+
 .navbar {
-    background-image: linear-gradient(to top, rgb(50, 0, 59) 0%, #000 100%);
-    height: 15rem;
+    background-image: linear-gradient(to top, var(--moradoOscuro) 0%, #000 100%);
+    height: auto;
+    justify-content: space-around;
+    border-bottom: 1rem solid #000;
+    top: 0;
 }
 
 .navbar a {
     font-family: var(--fuenteEncabezado);
     text-decoration: none;
+    color: white;
 }
 
+.nav-item {
+    padding: 2rem;
+    margin: 0.5rem;
+    background-color: rgb(0, 0, 0);
+    border-radius: 4rem;
+    font-size: 17px;
+}
+
+.container-fluid {
+    flex-direction: column;
+    align-items: center;
+}
+
+.navbar {
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .navbar {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .container-fluid {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .nav-item {
+        padding: 2rem;
+        margin: 2rem 1rem;
+        background-color: rgb(0, 0, 0);
+        border-radius: 4rem;
+        font-size: 17px;
+    }
+
+}
 /* MAIN */
 
 .container {

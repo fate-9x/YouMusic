@@ -10,7 +10,9 @@ const cover = document.querySelector("#cover");
 
 // Titulos
 
-const songs = ['stfu', 'dileatuamiga', 'wakawaka'];
+const songs = ['dileatuamiga', 'wakawaka', 'stfu'];
+
+
 
 // Index de la cancion
 
@@ -25,7 +27,7 @@ loadSong(songs[songIndex]);
 function loadSong(song) {
     title.innerText = song;
     audio.src = `./audio/${song}.mp3`;
-    cover.src = `./img/${song}.jpg`;
+    cover.src = `./img/music-img/${song}.jpg`;
 }
 
 function playSong(){
