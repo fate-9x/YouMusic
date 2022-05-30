@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Krub:wght@600&family=Nunito:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'youmusic/css/style.css' %}">
+    <title>You Music - Reproductor</title>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <header>
+        <nav class="navbar">
+            <div class="logo-container">
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <img src="{% static 'youmusic/img/logoMorado.png' %}" alt="" width="150">
+                </a>
+            </div>
+
+            <div class="container-fluid">
+                <a class="nav-item nav-item__1" href="{% url 'home' %}">Inicio</a>
+                <a class="nav-item nav-item__4" href="{% url 'aboutus' %}">Quiénes Somos</a>
+                <a class="nav-item nav-item__5" href="{% url 'contact' %}">Contáctanos</a>
+                <a class="nav-item nav-item__2" href="{% url 'signup' %}">Registrarse</a>
+                <a class="nav-item nav-item__3" href="{% url 'signin' %}">Iniciar Sesión</a>
+            </div>
+        </nav>
+    </header>
+    <!-- END Nav -->
+
+    <main id="margin" class="container sombra">
+        <!-- Cancion -->
+        <a class="hero-btn" href="{% url 'form-cancion' %}">Subir canción</a>
+        <div class="music-list">
+            <!-- Music-item -->
+            {% for cancion in canciones %}
+            <div class="music-item">
+                <div class="container__item-img">
+                    <img class="item-img img-set-song {{cancion.idCancion}}" src="{{cancion.imagenCancion}}" alt="{{cancion.nombreCancion}}" width="130">
+                </div>
+                <div class="container__item-info">
+                    <h4 class="item-info name-set-song {{cancion.idCancion}}">{{cancion.nombreCancion}}</h4>
+                </div>
+                <button class="play-item btn-set-song {{cancion.idCancion}}" id="{{cancion.idCancion}}"><i class="fas fa-play"></i></button>
+                <audio class="audio-set-song {{cancion.idCancion}}" src="{{cancion.audioCancion}}"></audio>
+                <th><a href="%url 'form canciones' ">Modificar</a></th>
+            </div>
+
+            {% endfor %}
+        </div>
+
+        <!-- END MUSIC ITEM -->
+
+
+
+
+        <!-- Reproductor -->
+        <div class="music-container sombra">
+            <!-- Music info -->
+            <div class="music-info">
+                <h4 id="title">#</h4>
+                <div class="progress-container">
+                    <div class="progress"></div>
+                </div>
+            </div>
+
+            <!-- Audio -->
+            <audio id="audio" src="#"></audio>
+
+            <!-- Audio Image -->
+            <div class="img-container">
+                <img id="cover" src="#" alt="">
+            </div>
+
+            <!-- Music Nav -->
+            <div class="music-nav">
+                <button id="prev-btn" class="music-btn">
+                    <i class="fas fa-backward"></i>
+                </button>
+                <button id="play-btn" class="music-btn play-btn">
+                    <i class="fas fa-play"></i>
+                </button>
+                <button id="next-btn" class="music-btn next-btn">
+                    <i class="fas fa-forward"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <script src="{% static 'youmusic/js/script.js' %}"></script>
+
+</body>
+
+</html>
