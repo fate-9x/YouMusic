@@ -6,8 +6,8 @@ class Cancion(models.Model):
     idCancion = models.IntegerField(primary_key=True, verbose_name='Id de cancion')
     nombreCancion = models.CharField(max_length=20, verbose_name='Nombre de la cancion')
 
-    audioCancion = models.FileField(upload_to='static/youmusic/files/audio', default="/", verbose_name='Audio Cancion')
-    imagenCancion = models.ImageField(upload_to = 'static/youmusic/files/img', default="/", verbose_name='Imagen Cancion')
+    audioCancion = models.FileField(upload_to='static/youmusic/files/audio', default="/", verbose_name='Audio Cancion', null=True)
+    imagenCancion = models.ImageField(upload_to = 'static/youmusic/files/img', default="/", verbose_name='Imagen Cancion', null=True)
 
     def __str__(self):
         return self.nombreCancion
