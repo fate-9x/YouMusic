@@ -1,4 +1,5 @@
 {% load static %}
+{% load socialaccount %}
 
 <!DOCTYPE html>
 <html lang="es">
@@ -12,7 +13,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Krub:wght@600&family=Nunito:ital,wght@0,300;1,400&display=swap"
 		rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
 		integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -30,18 +31,33 @@
 	<!-- NAV -->
 	<header>
 		<nav class="navbar">
-			<div class="logo-container" >
+			<div class="logo-container">
 				<a class="navbar-brand" href="{% url 'home' %}">
 					<img src="{% static 'youmusic/img/logoMorado.png' %}" alt="" width="150">
 				</a>
 			</div>
-			
+
 			<div class="container-fluid">
+				{% if user.is_authenticated %}
+				<a class="nav-item" href="{% url 'home' %}">Inicio</a>
+				<a class="nav-item" href="{% url 'aboutus' %}">Quiénes Somos</a>
+				<a class="nav-item" href="{% url 'contact' %}">Contáctanos</a>
+				<a class="nav-item" href="{% url 'logout' %}">Cerrar Sesion</a>
+				<div class="username_container">
+					<h2 class="username">Hola {{user.username}}</h2>
+				</div>
+				
+				
+
+				{% else %}
+
 				<a class="nav-item nav-item__1" href="{% url 'home' %}">Inicio</a>
 				<a class="nav-item nav-item__4" href="{% url 'aboutus' %}">Quiénes Somos</a>
 				<a class="nav-item nav-item__5" href="{% url 'contact' %}">Contáctanos</a>
 				<a class="nav-item nav-item__2" href="{% url 'signup' %}">Registrarse</a>
-				<a class="nav-item nav-item__3" href="{% url 'signin' %}">Iniciar Sesión</a>
+				<a class="nav-item nav-item__3" href="{% url 'account_login' %}">Iniciar Sesión</a>
+
+				{% endif %}
 			</div>
 		</nav>
 	</header>
@@ -52,10 +68,10 @@
 	<div class="hero-container">
 		<div class="hero sombra">
 			<div class="hero__text">
-				<h1 class="hero-heading" >
+				<h1 class="hero-heading">
 					You Music
 				</h1>
-				<p class="hero-subtitle" >
+				<p class="hero-subtitle">
 					Disfruta de tu música favorita
 				</p>
 				<a class="hero-btn" href="{% url 'player' %}">Escuchar Ahora</a>
@@ -68,7 +84,7 @@
 	<main class="container sombra">
 		<section>
 			<div class="grid">
-				<div class="gift-container" >
+				<div class="gift-container">
 					<img src="{% static 'youmusic/gifts/musica.gif' %}" alt="">
 				</div>
 				<div class="main-text">
