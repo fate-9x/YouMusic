@@ -57,6 +57,7 @@ ul {
     font-family: var(--fuenteEncabezado);
     text-decoration: none;
     color: white;
+    font-weight: normal;
 }
 
 .nav-item {
@@ -100,6 +101,24 @@ ul {
     }
 }
 
+.username_container {
+    margin: 0;
+    background-color: #000;
+    padding: 5rem 50%;
+}
+
+.username {
+    
+    color: #fff;
+}
+
+@media (min-width: 768px) {
+
+    .username_container{
+        padding: 5rem 7rem;
+    }
+    
+}
 
 /* HERO */
 

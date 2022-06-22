@@ -1,4 +1,6 @@
 {% load static %}
+{% load socialaccount %}
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -22,26 +24,39 @@
 <body>
 
     <!-- NAV -->
-    <header>
-        <nav class="navbar">
-            <div class="logo-container">
-                <a class="navbar-brand" href="{% url 'home' %}">
-                    <img src="{% static 'youmusic/img/logoMorado.png' %}" alt="" width="150">
-                </a>
-            </div>
+	<header>
+		<nav class="navbar">
+			<div class="logo-container">
+				<a class="navbar-brand" href="{% url 'home' %}">
+					<img src="{% static 'youmusic/img/logoMorado.png' %}" alt="" width="150">
+				</a>
+			</div>
 
-            <div class="container-fluid">
-                <a class="nav-item nav-item__1" href="{% url 'home' %}">Inicio</a>
-                <a class="nav-item nav-item__4" href="{% url 'aboutus' %}">Quiénes Somos</a>
-                <a class="nav-item nav-item__5" href="{% url 'contact' %}">Contáctanos</a>
-                <a class="nav-item nav-item__2" href="{% url 'signup' %}">Registrarse</a>
-                <a class="nav-item nav-item__3" href="{% url 'signin' %}">Iniciar Sesión</a>
-            </div>
-        </nav>
-    </header>
+			<div class="container-fluid">
+				{% if user.is_authenticated %}
+				<a class="nav-item" href="{% url 'home' %}">Inicio</a>
+				<a class="nav-item" href="{% url 'aboutus' %}">Quiénes Somos</a>
+				<a class="nav-item" href="{% url 'contact' %}">Contáctanos</a>
+				<a class="nav-item" href="{% url 'logout' %}">Cerrar Sesion</a>
+				<div class="username_container">
+					<h2 class="username">Hola {{user.username}}</h2>
+				</div>
+				
+				
 
-    
-    <!-- END Nav -->
+				{% else %}
+
+				<a class="nav-item nav-item__1" href="{% url 'home' %}">Inicio</a>
+				<a class="nav-item nav-item__4" href="{% url 'aboutus' %}">Quiénes Somos</a>
+				<a class="nav-item nav-item__5" href="{% url 'contact' %}">Contáctanos</a>
+				<a class="nav-item nav-item__2" href="{% url 'signup' %}">Registrarse</a>
+				<a class="nav-item nav-item__3" href="{% url 'account_login' %}">Iniciar Sesión</a>
+
+				{% endif %}
+			</div>
+		</nav>
+	</header>
+	<!-- END Nav -->
 
     <main id="margin" class="container sombra">
         <!-- Cancion -->
