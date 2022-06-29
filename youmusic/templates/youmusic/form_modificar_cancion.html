@@ -52,7 +52,7 @@
 				<a class="nav-item nav-item__1" href="{% url 'home' %}">Inicio</a>
 				<a class="nav-item nav-item__4" href="{% url 'aboutus' %}">Quiénes Somos</a>
 				<a class="nav-item nav-item__5" href="{% url 'contact' %}">Contáctanos</a>
-				<a class="nav-item nav-item__2" href="{% url 'signup' %}">Registrarse</a>
+				<a class="nav-item nav-item__2" href="{% url 'account_signup' %}">Registrarse</a>
 				<a class="nav-item nav-item__3" href="{% url 'account_login' %}">Iniciar Sesión</a>
 
 				{% endif %}
@@ -61,7 +61,7 @@
 	</header>
 	<!-- END Nav -->
 
-
+{% if user.is_authenticated %}
     <main class="container sombra">
 
         <!-- Formulario -->
@@ -91,15 +91,28 @@
                 <label for="imagenCancion">Imagen de la Cancion</label>
                 <input type="file" name="imagenCancion" accept="image/*" id="id_imagenCancion">
             </p>
-
-			<input class="boton" type="submit" value="enviar" id="enviar">
-
-
+            <div class="boton-container">
+				<input class="boton" type="submit" value="Enviar" id="enviar">
+			</div>
             <div class="alert alert-succes" role="alert">
                 {{mensaje}}
             </div>
         </form>
     </main>
+
+{% else %}
+
+<main class="container sombra" >
+
+    <div class="main-text">
+        <h3>Porfavor Inicie Sesion</h3>
+    </div>
+
+    <a class="hero-btn" href="{% url 'account_login' %}">Iniciar Sesion</a>
+
+</main>
+
+{% endif %}
 
     <footer>
         <!--redes-->

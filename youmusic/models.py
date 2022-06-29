@@ -11,7 +11,7 @@ class Cancion(models.Model):
 
     def __str__(self):
         return self.nombreCancion
-
+'''
 class Usuarios(models.Model):
     nombreUsuario = models.CharField(max_length=30, verbose_name='Nombre de Usuario')
 
@@ -20,6 +20,8 @@ class Usuarios(models.Model):
     tokenUsuario = models.CharField(max_length=100, verbose_name='Token de Usuario')
 
     emailUsuario = models.CharField(max_length=100, verbose_name='Email de Usuario', null=True)
+'''
+
 '''
 class Imagen(models.Model):
     
